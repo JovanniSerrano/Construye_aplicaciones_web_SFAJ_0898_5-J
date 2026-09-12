@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>México | Septiembre Mes Patrio</title>
+    
     <style>
-        /* Variables de color */
+        /* =========================================
+           VARIABLES CSS
+           ========================================= */
         :root {
             --verde: #006847;
             --blanco: #ffffff;
@@ -14,14 +18,16 @@
             --texto: #333333;
         }
 
-        /* Estilos Globales */
+        /* =========================================
+           ESTILOS GLOBALES
+           ========================================= */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--fondo-neutro);
             color: var(--texto);
-            line-height: 1.6;
+            line-height: 1.6; 
         }
 
         h1, h2, h3 {
@@ -32,10 +38,10 @@
            PANTALLA DE INICIO (PORTADA)
            ========================================= */
         #pantalla-inicio {
-            min-height: 100vh;
+            min-height: 100vh; 
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-between; 
             background-color: var(--blanco);
             text-align: center;
             box-sizing: border-box;
@@ -79,28 +85,38 @@
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
+            transition: transform 0.3s, background-color 0.3s; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .btn-ingresar:hover {
             background-color: var(--rojo);
-            transform: scale(1.05);
+            transform: scale(1.05); 
         }
 
         /* =========================================
-           CONTENIDO PRINCIPAL (Oculto inicialmente)
+           CONTENIDO PRINCIPAL
            ========================================= */
         #contenido-principal {
             display: none; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Contenedor flexible para empujar el footer hacia abajo si hay poco texto */
+        .wrapper-contenido {
+            flex: 1;
         }
 
-        /* Botón Hamburguesa */
+        /* =========================================
+           BOTÓN HAMBURGUESA Y MENÚ LATERAL
+           ========================================= */
         .btn-hamburguesa {
-            position: fixed;
+            position: fixed; 
             top: 20px;
             left: 20px;
-            z-index: 1001;
+            z-index: 1001; 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -123,11 +139,10 @@
             transition: 0.3s;
         }
 
-        /* Menú de navegación Oculto (Lateral) */
         nav {
             position: fixed;
             top: 0;
-            left: -300px;
+            left: -300px; 
             width: 250px;
             height: 100vh;
             background-color: #222;
@@ -135,7 +150,7 @@
             flex-direction: column;
             padding-top: 80px;
             z-index: 1000;
-            transition: left 0.4s ease;
+            transition: left 0.4s ease; 
             box-shadow: 2px 0 10px rgba(0,0,0,0.5);
         }
 
@@ -156,7 +171,7 @@
 
         nav a:hover {
             background-color: var(--verde);
-            padding-left: 35px;
+            padding-left: 35px; 
         }
 
         .btn-volver-inicio {
@@ -169,7 +184,9 @@
             background-color: #a80e1e !important;
         }
 
-        /* Encabezado */
+        /* =========================================
+           ENCABEZADO (HEADER) DEL CONTENIDO
+           ========================================= */
         header {
             background: linear-gradient(to right, var(--verde) 33.33%, var(--blanco) 33.33%, var(--blanco) 66.66%, var(--rojo) 66.66%);
             text-align: center;
@@ -178,7 +195,7 @@
         }
 
         header h1 {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.95); 
             color: var(--texto);
             display: inline-block;
             padding: 15px 30px;
@@ -189,11 +206,30 @@
             border: 2px solid var(--texto);
         }
 
-        /* Contenedor Principal */
+        /* =========================================
+           CONTENEDOR Y SECCIONES TIPO "PÁGINA"
+           ========================================= */
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
+            max-width: 1000px; 
+            margin: 2rem auto; 
             padding: 0 20px;
+        }
+
+        /* Clase para ocultar todas las secciones por defecto */
+        .vista {
+            display: none;
+            animation: aparecer 0.5s ease-out; /* Animación de entrada */
+        }
+
+        /* Clase para mostrar solo la sección activa */
+        .vista.activa {
+            display: block;
+        }
+
+        /* Animación suave para cuando cambias de "página" */
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         section {
@@ -202,10 +238,9 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--verde);
+            border-left: 5px solid var(--verde); 
         }
 
-        /* Sección de Presentación */
         #presentacion p {
             font-size: 1.1rem;
             margin-bottom: 15px;
@@ -216,11 +251,13 @@
             font-weight: bold;
         }
 
-        /* Línea de tiempo */
+        /* =========================================
+           LÍNEA DE TIEMPO
+           ========================================= */
         .timeline ul {
-            list-style-type: none;
+            list-style-type: none; 
             padding-left: 20px;
-            border-left: 3px solid var(--rojo);
+            border-left: 3px solid var(--rojo); 
         }
 
         .timeline li {
@@ -232,12 +269,12 @@
         .timeline li::before {
             content: '';
             position: absolute;
-            left: -25px;
+            left: -25px; 
             top: 5px;
             width: 15px;
             height: 15px;
             background-color: var(--verde);
-            border-radius: 50%;
+            border-radius: 50%; 
         }
 
         .timeline h3 {
@@ -245,11 +282,13 @@
             color: var(--rojo);
         }
 
-        /* Personajes Ilustres */
+        /* =========================================
+           CUADRÍCULA DE PERSONAJES
+           ========================================= */
         .grid-personajes {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 20px; 
         }
 
         .card {
@@ -262,27 +301,29 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px); 
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Mitos y Datos Curiosos */
+        /* =========================================
+           MITOS Y DATOS CURIOSOS
+           ========================================= */
         .mito {
-            background-color: #fff3f3;
+            background-color: #fff3f3; 
             border-left: 4px solid var(--rojo);
             padding: 15px;
             margin-bottom: 15px;
         }
         
         .dato {
-            background-color: #f0fdf4;
+            background-color: #f0fdf4; 
             border-left: 4px solid var(--verde);
             padding: 15px;
             margin-bottom: 15px;
         }
 
         /* =========================================
-           ESTILOS DEL FOOTER 
+           PIE DE PÁGINA (FOOTER)
            ========================================= */
         footer {
             background-color: var(--texto);
@@ -292,10 +333,7 @@
             border-top: 5px solid var(--rojo);
             width: 100%;
             box-sizing: border-box;
-        }
-
-        #contenido-principal footer {
-            margin-top: 2rem;
+            margin-top: auto; /* Mantiene el footer abajo si la página es corta */
         }
 
         footer p {
@@ -310,7 +348,6 @@
          PANTALLA DE INICIO (PORTADA)
          ========================================= -->
     <div id="pantalla-inicio">
-        
         <div class="contenido-inicio">
             <h2>México Mes Patrio</h2>
             <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/01/significado_colores_bandera_mexico.jpg" alt="Bandera de México" class="img-bandera-inicio">
@@ -324,13 +361,13 @@
             <p>PROGRAMACIÓN</p>
             <p>MTRA: LETICIA MEZA DIAZ</p>
         </footer>
-
     </div>
 
     <!-- =========================================
-         CONTENIDO PRINCIPAL
+         CONTENIDO PRINCIPAL (Oculto al iniciar)
          ========================================= -->
-    <div id="contenido-principal">
+    <!-- Se usa display: none en CSS, el script lo cambia a display: flex -->
+    <div id="contenido-principal" style="display: none;">
         
         <div class="btn-hamburguesa" id="menu-btn">
             <span></span>
@@ -338,94 +375,101 @@
             <span></span>
         </div>
 
+        <!-- El menú ahora usa el atributo 'data-destino' para saber qué página abrir -->
         <nav id="menu-lateral">
             <a id="btn-regresar-inicio" class="btn-volver-inicio">← Regresar al Inicio</a>
-            <a href="#presentacion">¿Qué celebramos?</a>
-            <a href="#fechas">Fechas Importantes</a>
-            <a href="#personajes">Personajes Ilustres</a>
-            <a href="#mitos">Datos y Mitos</a>
+            <a class="link-menu" data-destino="presentacion">¿Qué celebramos?</a>
+            <a class="link-menu" data-destino="fechas">Fechas Importantes</a>
+            <a class="link-menu" data-destino="personajes">Personajes Ilustres</a>
+            <a class="link-menu" data-destino="mitos">Datos y Mitos</a>
         </nav>
 
-        <header>
-            <h1>México | Septiembre Mes Patrio</h1>
-        </header>
+        <div class="wrapper-contenido">
+            <header>
+                <h1>México | Septiembre Mes Patrio</h1>
+            </header>
 
-        <div class="container">
-            
-            <section id="presentacion">
-                <h2>¿Qué se celebra en septiembre en México y por qué?</h2>
-                <p>Septiembre es conocido mundialmente como el <span class="resaltado">Mes de la Patria</span> en México. Durante este mes, el país entero se viste de verde, blanco y rojo para conmemorar el aniversario del inicio de nuestra lucha por la Independencia.</p>
-                <p><strong>¿Por qué lo celebramos?</strong><br>
-                Celebramos para honrar la memoria y la valentía de los héroes nacionales que, la madrugada del 16 de septiembre de 1810, decidieron levantarse en armas buscando la libertad y la soberanía del territorio, dejando atrás casi 300 años de dominio español.</p>
-                <p>Además del inicio de la Independencia, septiembre alberga otras fechas históricas que forjaron la identidad nacional, como la heroica defensa del Castillo de Chapultepec y la consumación misma de la Independencia en 1821. Es un mes para recordar quiénes somos y sentirnos orgullosos de nuestras raíces.</p>
-            </section>
-
-            <!-- SECCIÓN ACTUALIZADA CON TUS FECHAS -->
-            <section id="fechas" class="timeline">
-                <h2>Línea de Tiempo del Mes Patrio</h2>
-                <ul>
-                    <li>
-                        <h3>1 de Septiembre</h3>
-                        <p><strong>Primer Informe de Gobierno Presidencial.</strong></p>
-                    </li>
-                    <li>
-                        <h3>13 de Septiembre</h3>
-                        <p><strong>Conmemoración de los Niños Héroes</strong> y la Defensa del Castillo de Chapultepec (1847).</p>
-                    </li>
-                    <li>
-                        <h3>15 de Septiembre</h3>
-                        <p><strong>Conmemoración del Grito de Dolores</strong> (ceremonia y festejos nocturnos).</p>
-                    </li>
-                    <li>
-                        <h3>16 de Septiembre</h3>
-                        <p><strong>Aniversario del inicio de la Independencia de México (1810)</strong> — Día de fiesta patria oficial.</p>
-                    </li>
-                    <li>
-                        <h3>27 de Septiembre</h3>
-                        <p><strong>Consumación de la Independencia de México</strong> con el ingreso del Ejército Trigarante (1821).</p>
-                    </li>
-                    <li>
-                        <h3>30 de Septiembre</h3>
-                        <p><strong>Natalicio de José María Morelos y Pavón (1765).</strong></p>
-                    </li>
-                </ul>
-            </section>
-
-            <section id="personajes">
-                <h2>Personajes Ilustres</h2>
-                <div class="grid-personajes">
-                    <div class="card">
-                        <h3>Miguel Hidalgo y Costilla</h3>
-                        <p>Conocido como el "Padre de la Patria", inició el movimiento de independencia con el Grito de Dolores.</p>
-                    </div>
-                    <div class="card">
-                        <h3>José María Morelos</h3>
-                        <p>Líder militar que organizó la segunda etapa de la Guerra de Independencia y redactó "Sentimientos de la Nación".</p>
-                    </div>
-                    <div class="card">
-                        <h3>Josefa Ortiz de Domínguez</h3>
-                        <p>La "Corregidora", figura clave que avisó a los insurgentes que la conspiración había sido descubierta.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Vicente Guerrero</h3>
-                        <p>Mantuvo viva la resistencia insurgente y pactó con Agustín de Iturbide la consumación de la independencia.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="mitos">
-                <h2>Datos Curiosos y Mitos Desmentidos</h2>
+            <div class="container">
                 
-                <div class="mito">
-                    <strong>Mito: Porfirio Díaz cambió la fecha del Grito por su cumpleaños.</strong>
-                    <p>La celebración del Grito la noche del 15 comenzó desde la década de 1840, por cuestiones prácticas y de verbena popular, mucho antes de que Díaz fuera presidente.</p>
-                </div>
+                <!-- PÁGINA 1: Presentación (Tiene la clase "activa" por defecto) -->
+                <section id="presentacion" class="vista activa">
+                    <h2>¿Qué se celebra en septiembre en México y por qué?</h2>
+                    <p>Septiembre es conocido mundialmente como el <span class="resaltado">Mes de la Patria</span> en México. Durante este mes, el país entero se viste de verde, blanco y rojo para conmemorar el aniversario del inicio de nuestra lucha por la Independencia.</p>
+                    <p><strong>¿Por qué lo celebramos?</strong><br>
+                    Celebramos para honrar la memoria y la valentía de los héroes nacionales que, la madrugada del 16 de septiembre de 1810, decidieron levantarse en armas buscando la libertad y la soberanía del territorio, dejando atrás casi 300 años de dominio español.</p>
+                    <p>Además del inicio de la Independencia, septiembre alberga otras fechas históricas que forjaron la identidad nacional, como la heroica defensa del Castillo de Chapultepec y la consumación misma de la Independencia en 1821. Es un mes para recordar quiénes somos y sentirnos orgullosos de nuestras raíces.</p>
+                </section>
 
-                <div class="dato">
-                    <strong>Dato Curioso: La Campana original.</strong>
-                    <p>La campana que Miguel Hidalgo tocó en Dolores en 1810 fue trasladada a Palacio Nacional en la CDMX, y es la misma que se toca cada año.</p>
-                </div>
-            </section>
+                <!-- PÁGINA 2: Fechas -->
+                <section id="fechas" class="vista">
+                    <h2>Línea de Tiempo del Mes Patrio</h2>
+                    <ul>
+                        <li>
+                            <h3>1 de Septiembre</h3>
+                            <p><strong>Primer Informe de Gobierno Presidencial.</strong></p>
+                        </li>
+                        <li>
+                            <h3>13 de Septiembre</h3>
+                            <p><strong>Conmemoración de los Niños Héroes</strong> y la Defensa del Castillo de Chapultepec (1847).</p>
+                        </li>
+                        <li>
+                            <h3>15 de Septiembre</h3>
+                            <p><strong>Conmemoración del Grito de Dolores</strong> (ceremonia y festejos nocturnos).</p>
+                        </li>
+                        <li>
+                            <h3>16 de Septiembre</h3>
+                            <p><strong>Aniversario del inicio de la Independencia de México (1810)</strong> — Día de fiesta patria oficial.</p>
+                        </li>
+                        <li>
+                            <h3>27 de Septiembre</h3>
+                            <p><strong>Consumación de la Independencia de México</strong> con el ingreso del Ejército Trigarante (1821).</p>
+                        </li>
+                        <li>
+                            <h3>30 de Septiembre</h3>
+                            <p><strong>Natalicio de José María Morelos y Pavón (1765).</strong></p>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- PÁGINA 3: Personajes -->
+                <section id="personajes" class="vista">
+                    <h2>Personajes Ilustres</h2>
+                    <div class="grid-personajes">
+                        <div class="card">
+                            <h3>Miguel Hidalgo y Costilla</h3>
+                            <p>Conocido como el "Padre de la Patria", inició el movimiento de independencia con el Grito de Dolores.</p>
+                        </div>
+                        <div class="card">
+                            <h3>José María Morelos</h3>
+                            <p>Líder militar que organizó la segunda etapa de la Guerra de Independencia y redactó "Sentimientos de la Nación".</p>
+                        </div>
+                        <div class="card">
+                            <h3>Josefa Ortiz de Domínguez</h3>
+                            <p>La "Corregidora", figura clave que avisó a los insurgentes que la conspiración había sido descubierta.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Vicente Guerrero</h3>
+                            <p>Mantuvo viva la resistencia insurgente y pactó con Agustín de Iturbide la consumación de la independencia.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PÁGINA 4: Mitos y Datos -->
+                <section id="mitos" class="vista">
+                    <h2>Datos Curiosos y Mitos Desmentidos</h2>
+                    
+                    <div class="mito">
+                        <strong>Mito: Porfirio Díaz cambió la fecha del Grito por su cumpleaños.</strong>
+                        <p>La celebración del Grito la noche del 15 comenzó desde la década de 1840, por cuestiones prácticas y de verbena popular, mucho antes de que Díaz fuera presidente.</p>
+                    </div>
+    
+                    <div class="dato">
+                        <strong>Dato Curioso: La Campana original.</strong>
+                        <p>La campana que Miguel Hidalgo tocó en Dolores en 1810 fue trasladada a Palacio Nacional en la CDMX, y es la misma que se toca cada año.</p>
+                    </div>
+                </section>
+
+            </div>
         </div>
 
         <footer>
@@ -436,37 +480,65 @@
         </footer>
     </div>
 
-    <!-- SCRIPT -->
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
     <script>
         const btnIngresar = document.getElementById('btn-ingresar');
         const pantallaInicio = document.getElementById('pantalla-inicio');
         const contenidoPrincipal = document.getElementById('contenido-principal');
         const btnRegresarInicio = document.getElementById('btn-regresar-inicio');
 
+        // Botón INGRESAR
         btnIngresar.addEventListener('click', () => {
-            pantallaInicio.style.display = 'none';
-            contenidoPrincipal.style.display = 'block';
-            window.scrollTo(0, 0);
+            pantallaInicio.style.display = 'none'; 
+            contenidoPrincipal.style.display = 'flex'; // Usamos flex para mantener el footer abajo
+            
+            // Aseguramos que siempre inicie en la presentación
+            document.querySelectorAll('.vista').forEach(v => v.classList.remove('activa'));
+            document.getElementById('presentacion').classList.add('activa');
+            
+            window.scrollTo(0, 0); 
         });
 
+        // Botón Regresar al Inicio
         btnRegresarInicio.addEventListener('click', () => {
-            contenidoPrincipal.style.display = 'none';
-            pantallaInicio.style.display = 'flex';
-            menuLateral.classList.remove('activo');
+            contenidoPrincipal.style.display = 'none'; 
+            pantallaInicio.style.display = 'flex'; 
+            menuLateral.classList.remove('activo'); 
             window.scrollTo(0, 0);
         });
 
+        // Lógica del menú hamburguesa
         const btnMenu = document.getElementById('menu-btn');
         const menuLateral = document.getElementById('menu-lateral');
-        const enlacesMenu = document.querySelectorAll('#menu-lateral a:not(#btn-regresar-inicio)');
-
+        
         btnMenu.addEventListener('click', () => {
-            menuLateral.classList.toggle('activo');
+            menuLateral.classList.toggle('activo'); 
         });
 
-        enlacesMenu.forEach(enlace => {
-            enlace.addEventListener('click', () => {
+        // Lógica de "Páginas" (Cambio de vistas)
+        const enlacesNavegacion = document.querySelectorAll('.link-menu');
+        const vistas = document.querySelectorAll('.vista');
+
+        enlacesNavegacion.forEach(enlace => {
+            enlace.addEventListener('click', (evento) => {
+                // 1. Obtenemos qué página queremos abrir
+                const idDestino = enlace.getAttribute('data-destino');
+                
+                // 2. Ocultamos todas las páginas quitándoles la clase "activa"
+                vistas.forEach(vista => {
+                    vista.classList.remove('activa');
+                });
+
+                // 3. Mostramos solo la página solicitada
+                document.getElementById(idDestino).classList.add('activa');
+
+                // 4. Cerramos el menú
                 menuLateral.classList.remove('activo');
+                
+                // 5. Regresamos el scroll hacia arriba
+                window.scrollTo(0, 0);
             });
         });
     </script>

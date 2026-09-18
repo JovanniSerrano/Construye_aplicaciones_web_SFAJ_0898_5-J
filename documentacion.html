@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica de metadatos y codificación de caracteres -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>México | Septiembre Mes Patrio</title>
+    
+    <style>
+        /* ==========================================================================
+           1. VARIABLES CSS (Custom Properties)
+           Permiten reutilizar valores de color en todo el documento para mantener consistencia.
+           ========================================================================== */
+        :root {
+            --verde: #006847;         /* Verde de la bandera mexicana */
+            --blanco: #ffffff;        /* Blanco neutro */
+            --rojo: #CE1126;          /* Rojo de la bandera mexicana */
+            --fondo-neutro: #f4f4f9;  /* Gris claro para el fondo general */
+            --texto: #333333;         /* Color oscuro para mejorar legibilidad en textos */
+        }
+
+        /* ==========================================================================
+           2. ESTILOS GLOBALES
+           Reset básico y tipografía predeterminada para el sitio web.
+           ========================================================================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--fondo-neutro);
+            color: var(--texto);
+            line-height: 1.6; /* Espaciado entre líneas para facilitar la lectura */
+        }
+
+        h1, h2, h3 {
+            color: var(--verde); /* Títulos jerárquicos alineados al color verde principal */
+        }
+
+        /* ==========================================================================
+           3. PANTALLA DE INICIO (PORTADA)
+           Estructura de la landing page incial antes de acceder al contenido.
+           ========================================================================== */
+        #pantalla-inicio {
+            min-height: 100vh;           /* Cubre toda la altura visible de la pantalla */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribuye espacio entre el contenido y el footer */
+            background-color: var(--blanco);
+            text-align: center;
+            box-sizing: border-box;
+            border-top: 10px solid var(--verde); /* Franja decorativa superior */
+        }
+
+        .contenido-inicio {
+            flex: 1;                     /* Ocupa el espacio disponible central */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contenido-inicio h2 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--texto);
+            text-transform: uppercase;
+            letter-spacing: 2px;         /* Espaciado amplio entre letras */
+        }
+
+        .img-bandera-inicio {
+            max-width: 100%;
+            height: auto;
+            max-height: 350px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra para dar efecto de relieve */
+            object-fit: cover;
+        }
+
+        /* Estilo interactivo para el botón principal de ingreso */
+        .btn-ingresar {
+            background-color: var(--verde);
+            color: var(--blanco);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s; /* Transición suave de animación */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Efecto al pasar el cursor sobre el botón de ingreso */
+        .btn-ingresar:hover {
+            background-color: var(--rojo);
+            transform: scale(1.05);      /* Incrementa levemente el tamaño */
+        }
+
+        /* ==========================================================================
+           4. CONTENIDO PRINCIPAL (Estructura de la aplicación web)
+           ========================================================================== */
+        #contenido-principal {
+            display: none;               /* Oculto inicialmente, se muestra mediante JS */
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        /* Contenedor flexible para garantizar que el footer permanezca abajo */
+        .wrapper-contenido {
+            flex: 1;
+        }
+
+        /* ==========================================================================
+           5. BOTÓN HAMBURGUESA Y MENÚ DESPLEGABLE LATERAL
+           ========================================================================== */
+        .btn-hamburguesa {
+            position: fixed;            /* Permanece visible incluso al hacer scroll */
+            top: 20px;
+            left: 20px;
+            z-index: 1001;              /* Asegura que el botón esté sobre el resto de elementos */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border: 2px solid var(--texto);
+        }
+
+        /* Líneas internas del icono del menú hamburguesa */
+        .btn-hamburguesa span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: var(--texto);
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        /* Panel del menú lateral flotante */
+        nav {
+            position: fixed;
+            top: 0;
+            left: -300px;                /* Oculto fuera de la pantalla a la izquierda */
+            width: 250px;
+            height: 100vh;
+            background-color: #222;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+            z-index: 1000;
+            transition: left 0.4s ease;  /* Animación suave para desplegar y ocultar */
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Estado del menú cuando JS agrega la clase 'activo' */
+        nav.activo {
+            left: 0;                    /* Se desplaza hacia dentro de la pantalla visible */
+        }
+
+        /* Estilos para los enlaces del menú lateral */
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s, padding-left 0.3s;
+            cursor: pointer;
+        }
+
+        /* Efecto de foco/hover al pasar el cursor sobre los enlaces */
+        nav a:hover {
+            background-color: var(--verde);
+            padding-left: 35px;          /* Desplazamiento animado del texto a la derecha */
+        }
+
+        /* Estilos específicos para el botón que regresa a la portada */
+        .btn-volver-inicio {
+            background-color: var(--rojo);
+            color: var(--blanco) !important;
+            border-left: 5px solid var(--verde);
+        }
+
+        .btn-volver-inicio:hover {
+            background-color: #a80e1e !important;
+        }
+
+        /* ==========================================================================
+           6. ENCABEZADO (HEADER)
+           ========================================================================== */
+        header {
+            /* Genera la bandera tricolor mexicana usando un gradiente lineal con CSS */
+            background: linear-gradient(to right, var(--verde) 33.33%, var(--blanco) 33.33%, var(--blanco) 66.66%, var(--rojo) 66.66%);
+            text-align: center;
+            padding: 4rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo semitransparente para legibilidad */
+            color: var(--texto);
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin: 0;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid var(--texto);
+        }
+
+        /* ==========================================================================
+           7. SISTEMA DE VISTAS Y SECCIONES (SPA Concept)
+           ========================================================================== */
+        .container {
+            max-width: 1000px; 
+            margin: 2rem auto; 
+            padding: 0 20px;
+        }
+
+        /* Oculta todas las vistas/secciones por defecto */
+        .vista {
+            display: none;
+            animation: aparecer 0.5s ease-out; /* Aplica transición de entrada */
+        }
+
+        /* Muestra únicamente la sección activa seleccionada en la navegación */
+        .vista.activa {
+            display: block;
+        }
+
+        /* Keyframe para animar suavemente la entrada de las pestañas/vistas */
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            background: var(--blanco);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--verde); 
+        }
+
+        #presentacion p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        #presentacion .resaltado {
+            color: var(--rojo);
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           8. COMPONENTES VISUALES: LÍNEA DE TIEMPO
+           ========================================================================== */
+        .timeline ul {
+            list-style-type: none; 
+            padding-left: 20px;
+            border-left: 3px solid var(--rojo); /* Línea vertical del conector */
+        }
+
+        .timeline li {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        /* Marcador circular para cada evento histórico */
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -25px; 
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--verde);
+            border-radius: 50%; 
+        }
+
+        .timeline h3 {
+            margin: 0 0 5px 0;
+            color: var(--rojo);
+        }
+
+        /* ==========================================================================
+           9. COMPONENTES VISUALES: TARJETAS (GRID SYSTEM)
+           ========================================================================== */
+        .grid-personajes {
+            display: grid;
+            /* Layout responsivo dinámico con un tamaño mínimo de 200px por tarjeta */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; 
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 4px solid var(--rojo);
+        }
+
+        .card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* ==========================================================================
+           10. COMPONENTES VISUALES: MITOS Y DATOS CURIOSOS
+           ========================================================================== */
+        .mito {
+            background-color: #fff3f3; 
+            border-left: 4px solid var(--rojo);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .dato {
+            background-color: #f0fdf4; 
+            border-left: 4px solid var(--verde);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* ==========================================================================
+           11. PIE DE PÁGINA (FOOTER)
+           ========================================================================== */
+        footer {
+            background-color: var(--texto);
+            color: var(--blanco);
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 5px solid var(--rojo);
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto; /* Empuja el footer al fondo en pantallas con poco contenido */
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         SECCIÓN 1: PANTALLA DE INICIO / LANDING PAGE
+         ========================================================================== -->
+    <div id="pantalla-inicio">
+        <div class="contenido-inicio">
+            <h2>México Mes Patrio</h2>
+            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/01/significado_colores_bandera_mexico.jpg" alt="Bandera de México" class="img-bandera-inicio">
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Celebremos con orgullo nuestra historia, cultura y libertad.</p>
+            <!-- Botón interactivo para inicializar la vista de contenido -->
+            <button id="btn-ingresar" class="btn-ingresar">INGRESAR</button>
+        </div>
+
+        <!-- Footer informativo de la portada -->
+        <footer>
+            <p><strong>SERRANO FLACO ALAN JOVANNI</strong></p>
+            <p>0898 5°J</p>
+            <p>PROGRAMACIÓN</p>
+            <p>MTRA: LETICIA MEZA DIAZ</p>
+        </footer>
+    </div>
+
+    <!-- ==========================================================================
+         SECCIÓN 2: CONTENIDO PRINCIPAL (MÓDULOS DE NAVEGACIÓN)
+         ========================================================================== -->
+    <div id="contenido-principal" style="display: none;">
+        
+        <!-- Botón del menú de navegación lateral -->
+        <div class="btn-hamburguesa" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Menú de navegación flotante -->
+        <nav id="menu-lateral">
+            <a id="btn-regresar-inicio" class="btn-volver-inicio">← Regresar al Inicio</a>
+            <!-- Uso de 'data-destino' para vincular dinámicamente con los IDs de las secciones -->
+            <a class="link-menu" data-destino="presentacion">¿Qué celebramos?</a>
+            <a class="link-menu" data-destino="fechas">Fechas Importantes</a>
+            <a class="link-menu" data-destino="personajes">Personajes Ilustres</a>
+            <a class="link-menu" data-destino="mitos">Datos y Mitos</a>
+        </nav>
+
+        <div class="wrapper-contenido">
+            <!-- Encabezado principal del módulo -->
+            <header>
+                <h1>México | Septiembre Mes Patrio</h1>
+            </header>
+
+            <div class="container">
+                
+                <!-- PÁGINA 1: Introducción y Presentación -->
+                <section id="presentacion" class="vista activa">
+                    <h2>¿Qué se celebra en septiembre en México y por qué?</h2>
+                    <p>Septiembre es conocido mundialmente como el <span class="resaltado">Mes de la Patria</span> en México. Durante este mes, el país entero se viste de verde, blanco y rojo para conmemorar el aniversario del inicio de nuestra lucha por la Independencia.</p>
+                    <p><strong>¿Por qué lo celebramos?</strong><br>
+                    Celebramos para honrar la memoria y la valentía de los héroes nacionales que, la madrugada del 16 de septiembre de 1810, decidieron levantarse en armas buscando la libertad y la soberanía del territorio, dejando atrás casi 300 años de dominio español.</p>
+                    <p>Además del inicio de la Independencia, septiembre alberga otras fechas históricas que forjaron la identidad nacional, como la heroica defensa del Castillo de Chapultepec y la consumación misma de la Independencia en 1821. Es un mes para recordar quiénes somos y sentirnos orgullosos de nuestras raíces.</p>
+                </section>
+
+                <!-- PÁGINA 2: Cronología de Fechas Patrias -->
+                <section id="fechas" class="vista timeline">
+                    <h2>Línea de Tiempo del Mes Patrio</h2>
+                    <ul>
+                        <li>
+                            <h3>1 de Septiembre</h3>
+                            <p><strong>Primer Informe de Gobierno Presidencial.</strong></p>
+                        </li>
+                        <li>
+                            <h3>13 de Septiembre</h3>
+                            <p><strong>Conmemoración de los Niños Héroes</strong> y la Defensa del Castillo de Chapultepec (1847).</p>
+                        </li>
+                        <li>
+                            <h3>15 de Septiembre</h3>
+                            <p><strong>Conmemoración del Grito de Dolores</strong> (ceremonia y festejos nocturnos).</p>
+                        </li>
+                        <li>
+                            <h3>16 de Septiembre</h3>
+                            <p><strong>Aniversario del inicio de la Independencia de México (1810)</strong> — Día de fiesta patria oficial.</p>
+                        </li>
+                        <li>
+                            <h3>27 de Septiembre</h3>
+                            <p><strong>Consumación de la Independencia de México</strong> con el ingreso del Ejército Trigarante (1821).</p>
+                        </li>
+                        <li>
+                            <h3>30 de Septiembre</h3>
+                            <p><strong>Natalicio de José María Morelos y Pavón (1765).</strong></p>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- PÁGINA 3: Módulo de Personajes Históricos -->
+                <section id="personajes" class="vista">
+                    <h2>Personajes Ilustres</h2>
+                    <div class="grid-personajes">
+                        <div class="card">
+                            <h3>Miguel Hidalgo y Costilla</h3>
+                            <p>Conocido como el "Padre de la Patria", inició el movimiento de independencia con el Grito de Dolores.</p>
+                        </div>
+                        <div class="card">
+                            <h3>José María Morelos</h3>
+                            <p>Líder militar que organizó la segunda etapa de la Guerra de Independencia y redactó "Sentimientos de la Nación".</p>
+                        </div>
+                        <div class="card">
+                            <h3>Josefa Ortiz de Domínguez</h3>
+                            <p>La "Corregidora", figura clave que avisó a los insurgentes que la conspiración había sido descubierta.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Vicente Guerrero</h3>
+                            <p>Mantuvo viva la resistencia insurgente y pactó con Agustín de Iturbide la consumación de la independencia.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PÁGINA 4: Módulo de Mitos y Datos Curiosos -->
+                <section id="mitos" class="vista">
+                    <h2>Datos Curiosos y Mitos Desmentidos</h2>
+                    
+                    <div class="mito">
+                        <strong>Mito: Porfirio Díaz cambió la fecha del Grito por su cumpleaños.</strong>
+                        <p>La celebración del Grito la noche del 15 comenzó desde la década de 1840, por cuestiones prácticas y de verbena popular, mucho antes de que Díaz fuera presidente.</p>
+                    </div>
+    
+                    <div class="dato">
+                        <strong>Dato Curioso: La Campana original.</strong>
+                        <p>La campana que Miguel Hidalgo tocó en Dolores en 1810 fue trasladada a Palacio Nacional en la CDMX, y es la misma que se toca cada año.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Footer del contenido principal -->
+        <footer>
+            <p><strong>SERRANO FLACO ALAN JOVANNI</strong></p>
+            <p>0898 5°J</p>
+            <p>PROGRAMACIÓN</p>
+            <p>MTRA: LETICIA MEZA DIAZ</p>
+        </footer>
+    </div>
+
+    <!-- ==========================================================================
+         SECCIÓN 3: LÓGICA EN JAVASCRIPT (Controlador de la Interfaz)
+         ========================================================================== -->
+    <script>
+        // Referencias a elementos del DOM (Document Object Model)
+        const btnIngresar = document.getElementById('btn-ingresar');
+        const pantallaInicio = document.getElementById('pantalla-inicio');
+        const contenidoPrincipal = document.getElementById('contenido-principal');
+        const btnRegresarInicio = document.getElementById('btn-regresar-inicio');
+        const btnMenu = document.getElementById('menu-btn');
+        const menuLateral = document.getElementById('menu-lateral');
+
+        // Referencias para la navegación entre secciones
+        const enlacesNavegacion = document.querySelectorAll('.link-menu');
+        const vistas = document.querySelectorAll('.vista');
+
+        /**
+         * Manejador de evento: Botón INGRESAR
+         * Oculta la portada, muestra el módulo principal e inicializa la primera sección.
+         */
+        btnIngresar.addEventListener('click', () => {
+            pantallaInicio.style.display = 'none'; 
+            contenidoPrincipal.style.display = 'flex'; // Cambia a Flexbox para mantener el footer centrado/inferior
+            
+            // Restablece el estado: Oculta todas las secciones y activa únicamente la presentación
+            vistas.forEach(v => v.classList.remove('activa'));
+            document.getElementById('presentacion').classList.add('activa');
+            
+            window.scrollTo(0, 0); // Desplaza el scroll arriba
+        });
+
+        /**
+         * Manejador de evento: Botón Regresar al Inicio
+         * Restaura la vista inicial de la portada y cierra el menú lateral si estaba abierto.
+         */
+        btnRegresarInicio.addEventListener('click', () => {
+            contenidoPrincipal.style.display = 'none'; 
+            pantallaInicio.style.display = 'flex'; 
+            menuLateral.classList.remove('activo'); 
+            window.scrollTo(0, 0);
+        });
+
+        /**
+         * Manejador de evento: Menú Hamburguesa
+         * Alterna la clase CSS 'activo' para mostrar/ocultar el panel lateral.
+         */
+        btnMenu.addEventListener('click', () => {
+            menuLateral.classList.toggle('activo'); 
+        });
+
+        /**
+         * Sistema Dinámico de Navegación (SPA)
+         * Recorre cada enlace y asigna un evento de clic para conmutar las pestañas.
+         */
+        enlacesNavegacion.forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                // 1. Obtiene el valor del atributo 'data-destino' del enlace clickeado
+                const idDestino = enlace.getAttribute('data-destino');
+                
+                // 2. Remueve la clase 'activa' de todas las vistas para ocultarlas
+                vistas.forEach(vista => {
+                    vista.classList.remove('activa');
+                });
+
+                // 3. Agrega la clase 'activa' a la vista correspondiente al atributo 'data-destino'
+                document.getElementById(idDestino).classList.add('activa');
+
+                // 4. Oculta de nuevo el menú lateral tras seleccionar una opción
+                menuLateral.classList.remove('activo');
+                
+                // 5. Reinicia la posición del scroll vertical
+                window.scrollTo(0, 0);
+            });
+        });
+    </script>
+</body>
+</html>

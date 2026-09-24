@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>México | Septiembre Mes Patrio</title>
+    <!-- Vinculación del archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- PANTALLA DE INICIO (PORTADA) -->
+    <div id="pantalla-inicio">
+        <div class="contenido-inicio">
+            <h2>México Mes Patrio</h2>
+            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/01/significado_colores_bandera_mexico.jpg" alt="Bandera de México" class="img-bandera-inicio">
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Celebremos con orgullo nuestra historia, cultura y libertad.</p>
+            <button id="btn-ingresar" class="btn-ingresar">INGRESAR</button>
+        </div>
+
+        <footer>
+            <p><strong>SERRANO FLACO ALAN JOVANNI</strong></p>
+            <p>0898 5°J</p>
+            <p>PROGRAMACIÓN</p>
+            <p>MTRA: LETICIA MEZA DIAZ</p>
+        </footer>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="contenido-principal" style="display: none;">
+        
+        <div class="btn-hamburguesa" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="menu-lateral">
+            <a id="btn-regresar-inicio" class="btn-volver-inicio">← Regresar al Inicio</a>
+            <a class="link-menu" data-destino="presentacion">¿Qué celebramos?</a>
+            <a class="link-menu" data-destino="fechas">Fechas Importantes</a>
+            <a class="link-menu" data-destino="personajes">Personajes Ilustres</a>
+            <a class="link-menu" data-destino="mitos">Datos y Mitos</a>
+        </nav>
+
+        <div class="wrapper-contenido">
+            <header>
+                <h1>México | Septiembre Mes Patrio</h1>
+            </header>
+
+            <div class="container">
+                
+                <!-- PÁGINA 1: Presentación -->
+                <section id="presentacion" class="vista activa">
+                    <h2>¿Qué se celebra en septiembre en México y por qué?</h2>
+                    <p>Septiembre es conocido mundialmente como el <span class="resaltado">Mes de la Patria</span> en México. Durante este mes, el país entero se viste de verde, blanco y rojo para conmemorar el aniversario del inicio de nuestra lucha por la Independencia.</p>
+                    <p><strong>¿Por qué lo celebramos?</strong><br>
+                    Celebramos para honrar la memoria y la valentía de los héroes nacionales que, la madrugada del 16 de septiembre de 1810, decidieron levantarse en armas buscando la libertad y la soberanía del territorio, dejando atrás casi 300 años de dominio español.</p>
+                    <p>Además del inicio de la Independencia, septiembre alberga otras fechas históricas que forjaron la identidad nacional, como la heroica defensa del Castillo de Chapultepec y la consumación misma de la Independencia en 1821. Es un mes para recordar quiénes somos y sentirnos orgullosos de nuestras raíces.</p>
+                </section>
+
+                <!-- PÁGINA 2: Fechas -->
+                <section id="fechas" class="vista">
+                    <h2>Línea de Tiempo del Mes Patrio</h2>
+                    <div class="timeline">
+                        <ul>
+                            <li>
+                                <h3>1 de Septiembre</h3>
+                                <p><strong>Primer Informe de Gobierno Presidencial.</strong></p>
+                            </li>
+                            <li>
+                                <h3>13 de Septiembre</h3>
+                                <p><strong>Conmemoración de los Niños Héroes</strong> y la Defensa del Castillo de Chapultepec (1847).</p>
+                            </li>
+                            <li>
+                                <h3>15 de Septiembre</h3>
+                                <p><strong>Conmemoración del Grito de Dolores</strong> (ceremonia y festejos nocturnos).</p>
+                            </li>
+                            <li>
+                                <h3>16 de Septiembre</h3>
+                                <p><strong>Aniversario del inicio de la Independencia de México (1810)</strong> — Día de fiesta patria oficial.</p>
+                            </li>
+                            <li>
+                                <h3>27 de Septiembre</h3>
+                                <p><strong>Consumación de la Independencia de México</strong> con el ingreso del Ejército Trigarante (1821).</p>
+                            </li>
+                            <li>
+                                <h3>30 de Septiembre</h3>
+                                <p><strong>Natalicio de José María Morelos y Pavón (1765).</strong></p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- PÁGINA 3: Personajes -->
+                <section id="personajes" class="vista">
+                    <h2>Personajes Ilustres</h2>
+                    <div class="grid-personajes">
+                        <div class="card">
+                            <h3>Miguel Hidalgo y Costilla</h3>
+                            <p>Conocido como el "Padre de la Patria", inició el movimiento de independencia con el Grito de Dolores.</p>
+                        </div>
+                        <div class="card">
+                            <h3>José María Morelos</h3>
+                            <p>Líder militar que organizó la segunda etapa de la Guerra de Independencia y redactó "Sentimientos de la Nación".</p>
+                        </div>
+                        <div class="card">
+                            <h3>Josefa Ortiz de Domínguez</h3>
+                            <p>La "Corregidora", figura clave que avisó a los insurgentes que la conspiración había sido descubierta.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Vicente Guerrero</h3>
+                            <p>Mantuvo viva la resistencia insurgente y pactó con Agustín de Iturbide la consumación de la independencia.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PÁGINA 4: Mitos y Datos -->
+                <section id="mitos" class="vista">
+                    <h2>Datos Curiosos y Mitos Desmentidos</h2>
+                    
+                    <div class="mito">
+                        <strong>Mito: Porfirio Díaz cambió la fecha del Grito por su cumpleaños.</strong>
+                        <p>La celebración del Grito la noche del 15 comenzó desde la década de 1840, por cuestiones prácticas y de verbena popular, mucho antes de que Díaz fuera presidente.</p>
+                    </div>
+                    
+                    <div class="dato">
+                        <strong>Dato Curioso: La Campana original.</strong>
+                        <p>La campana que Miguel Hidalgo tocó en Dolores en 1810 fue trasladada a Palacio Nacional en la CDMX, y es la misma que se toca cada año.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>SERRANO FLACO ALAN JOVANNI</strong></p>
+            <p>0898 5°J</p>
+            <p>PROGRAMACIÓN</p>
+            <p>MTRA: LETICIA MEZA DIAZ</p>
+        </footer>
+    </div>
+
+    <!-- Vinculación del archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

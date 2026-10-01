@@ -1,0 +1,213 @@
+<!-- Serrano Flaco Alan Jovanni | 0898 | 5°J | Programación -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horario 5J</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    /* Logo y Título */
+    .logo {
+      width: 100px;
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    h2 {
+      color: #1a5632;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo de las Tablas */
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+      color: #000; /* Texto negro para todas las celdas */
+    }
+
+    th {
+      background-color: #f0f0f0;
+      color: #1a5632;
+    }
+
+    .hora {
+      color: #4a75a0;
+      font-weight: bold;
+    }
+
+    .recreo {
+      color: #4a75a0;
+      font-weight: bold;
+    }
+
+    /* Colores de las materias */
+    .ch2 { background-color: #ffff80; }
+    .apli-adm { background-color: #c0b838; }
+    .ingles { background-color: #8c7c34; }
+    .prog1 { background-color: #ff6600; }
+    .cneyt { background-color: #76ee00; }
+    .prog2 { background-color: #b0b0b0; }
+    .fs { background-color: #9933ff; }
+    .tsdm { background-color: #00a03e; }
+
+    /* Tabla de profesores */
+    .tabla-profs td {
+      text-align: left;
+    }
+    .tabla-profs td:first-child {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <h1>Centro de Bachilleres Tecnologico Industrial y de Servicios</h1>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR11_KNJiorVy3-35HSOVxlTDFTsZatuB8-OCAIOPNV2w&s=10" alt="Logo" class="logo">
+  <h2> HORARIO GRUPO 5J</h2>
+
+  <!-- Tabla del Horario -->
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="hora">7:00<br>8:00</td>
+        <td></td>
+        <td class="ch2">5* CH 2<br>Juarez<br><b>AULA 38</b></td>
+        <td class="apli-adm">5* Apli. Adm<br>Estrada<br><b>AULA 38</b></td>
+        <td class="apli-adm">5* Apli. Adm<br>Estrada<br><b>AULA 38</b></td>
+        <td class="ingles">5* Ingles 5<br>Terrazas<br><b>AULA 38</b></td>
+      </tr>
+      <tr>
+        <td class="hora">8:00<br>9:00</td>
+        <td></td>
+        <td class="apli-adm">5* Apli. Adm<br>Estrada<br><b>AULA 38</b></td>
+        <td class="ch2">5* CH 2<br>Juarez<br><b>AULA 38</b></td>
+        <td class="ingles">5* Ingles 5<br>Terrazas<br><b>AULA 38</b></td>
+        <td class="ch2">5* CH 2<br>Juarez<br><b>AULA 38</b></td>
+      </tr>
+      <tr>
+        <td class="hora">9:00<br>10:00</td>
+        <td class="ingles">5* Ingles 5<br>Terrazas<br><b>AULA 38</b></td>
+        <td class="prog1" rowspan="2">PROG M4S1<br>Meza<br><b>AULA 38</b></td>
+        <td class="prog1">PROG M4S1<br>Meza<br><b>AULA 38</b></td>
+        <td class="prog1" rowspan="2">PROG M4S1<br>Meza<br><b>AULA 38</b></td>
+        <td class="prog1" rowspan="2">PROG M4S1<br>Meza<br><b>AULA 38</b></td>
+      </tr>
+      <tr>
+        <td class="hora">10:00<br>10:50</td>
+        <td class="cneyt">5* CNEyT 5<br>Reyes<br><b>AULA 38</b></td>
+        <td class="ingles">5* Ingles 5<br>Terrazas<br><b>AULA 38</b></td>
+      </tr>
+
+      <!-- Recreo -->
+      <tr>
+        <td colspan="6" class="recreo">recreo</td>
+      </tr>
+
+      <tr>
+        <td class="hora">11:10<br>12:00</td>
+        <td class="prog2">PROG M4S2<br>Gonzales A<br><b>AULA 38</b></td>
+        <td class="prog2">PROG M4S2<br>Gonzales A<br><b>AULA 38</b></td>
+        <td class="cneyt" rowspan="2">5* CNEyT 5<br>Reyes<br><b>AULA 38</b></td>
+        <td class="prog2" rowspan="2">PROG M4S2<br>Gonzales A<br><b>AULA 38</b></td>
+        <td class="cneyt">5* CNEyT 5<br>Reyes<br><b>AULA 38</b></td>
+      </tr>
+      <tr>
+        <td class="hora">12:00<br>13:00</td>
+        <td class="fs">5* FS<br>Meza<br><b>AULA 38</b></td>
+        <td class="ingles">5* Ingles 5<br>Terrazas<br><b>AULA 38</b></td>
+        <td class="prog2">PROG M4S2<br>Gonzales A<br><b>AULA 38</b></td>
+      </tr>
+      <tr>
+        <td class="hora">13:00<br>14:00</td>
+        <td class="tsdm">5* TSdM 2<br>Macias<br><b>AULA 38</b></td>
+        <td class="tsdm">5* TSdM 2<br>Macias<br><b>AULA 38</b></td>
+        <td class="tsdm">5* TSdM 2<br>Macias<br><b>AULA 38</b></td>
+        <td class="tsdm">5* TSdM 2<br>Macias<br><b>AULA 38</b></td>
+        <td class="tsdm">5* TSdM 2<br>Macias<br><b>AULA 38</b></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tabla de Profesores -->
+  <table class="tabla-profs">
+    <thead>
+      <tr>
+        <th>nºhs.</th>
+        <th>Profesores</th>
+        <th>Materia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3</td>
+        <td>ESTRADA ORTEGA MARIA ANTONIETA</td>
+        <td class="apli-adm">5* Aplicaciones de la administracion</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>GONZALEZ AGUILERA LIDIA VIRIDIANA</td>
+        <td class="prog2">Implementa aplicaciones web</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>JUÁREZ LOZOYA GUILLERMO</td>
+        <td class="ch2">Conciencia Historica 2 Mexico durante el expansion</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>MACIAS MARIO</td>
+        <td class="tsdm">Temas Selectos de Matematicas 2</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>MEZA DÍAZ LETICIA</td>
+        <td class="prog1">Construye aplicaciones web</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>MEZA DÍAZ LETICIA</td>
+        <td class="fs">Formacion socioemocional 5</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>REYES LUIS HOMERO</td>
+        <td class="cneyt">Ciencias Naturales, Experimentales y Tecnologia 5</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>TERRAZAS CERVANTES GRISELDA</td>
+        <td class="ingles">Ingles 5</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

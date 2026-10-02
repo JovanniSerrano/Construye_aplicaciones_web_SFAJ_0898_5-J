@@ -1,42 +1,31 @@
 <!-- Define el tipo de documento como HTML5 -->
 <!DOCTYPE html>
-
 <!-- Define el idioma del documento (inglés) -->
 <html lang="en">
-
 <!-- Contiene metadatos e información de configuración del documento -->
 <head>
     <!-- Define la codificación de caracteres del documento como UTF-8 -->
     <meta charset="UTF-8">
-    
     <!-- Configura la vista en dispositivos móviles para que sea adaptable -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- Define el título de la página que se muestra en la pestaña del navegador -->
     <title>Formularios en HTML</title>
-    
     <!-- Incluye una hoja de estilos externa de Font Awesome para cargar íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <!-- Contiene el contenido visible de la página web -->
 <body>
-
     <!-- Encabezado principal de nivel 1 -->
     <h1>Formularios</h1>
-    
     <!-- Párrafo explicativo -->
     <p>Un formulario permite al visitante cargar datos y que sean enviados al servidor.</p>
-    
     <!-- Párrafo explicativo -->
     <p>El HTML no tiene la responsabilidad de registrar los datos en el servidor,
     esta actividad se delega a traves de un lenguaje que se ejecute en el servidor (PHP,
     ASP, ASP.NET, Node, etc.)
     </p>
-
     <!-- Encabezado secundario de nivel 2 -->
     <h2>Ejemplo basico</h2>
-    
     <!-- Define un formulario para recabar y enviar datos -->
     <form action="" method="post">
         Ingresa tu nombre:
@@ -47,7 +36,6 @@
         <!-- Botón para enviar los datos del formulario al servidor -->
         <input type="submit" value="enviar">
     </form>
-
     <h2>Formulario para contraseñas</h2>
     <form action="" method="post">
         Ingresa tu usuario:
@@ -61,7 +49,6 @@
         <!-- Botón para reiniciar/limpiar los campos del formulario -->
         <input type="reset" value="borrar">
     </form>
-
     <h2>Formulario con text area</h2>
     <form action="" method="post">
         Ingresa tu nombre:
@@ -78,7 +65,6 @@
         <input type="submit" value="enviar">
         <input type="reset" value="borrar">
     </form>
-
     <h2>Formularios con checkbox</h2>
     <form action="" method="post">
         Ingresa tu nombre:
@@ -92,7 +78,6 @@
         <input type="checkbox" name="C#">C# <br>
         <input type="checkbox" name="Flutter"> Flutter <br>
     </form>
-
     <h2>Formularios con Radioboton</h2>
     <form action="" method="post">
         Ingresa tu nombre:
@@ -108,7 +93,6 @@
         <input type="submit" value="enviar">
         <input type="reset" value="borrar">
     </form>
-
     <h2>Formularios con seleccion</h2>
     <form action="" method="post">
         Ingresa tu nombre:
@@ -131,7 +115,6 @@
         <input type="submit" value="enviar">
         <input type="reset" value="borrar">
     </form>
-
     <h2>Formulario con botones</h2>
     <form action="" method="post">
         Ingresa tu nombre:
@@ -142,7 +125,6 @@
         <!-- Botón interactivo de reinicio que puede contener elementos HTML como íconos -->
         <button type="reset">Borrar <i class="fa-solid fa-trash"></i></button>
     </form>
-
     <h2>Formulario con archivos</h2>
     <form action="" method="post">
         Ingresa tu nombre:
@@ -154,7 +136,6 @@
         <button type="submit">Enviar <i class="fa-regular fa-paper-plane"></i></button>
         <button type="reset">Borrar <i class="fa-solid fa-trash"></i></button>
     </form>
-
     <h2>Formulario con campos ocultos</h2>
     <form action="" method="post">
         <!-- Campo de entrada oculto al usuario para enviar datos internos -->
@@ -165,7 +146,6 @@
         <button type="submit">Enviar <i class="fa-regular fa-paper-plane"></i></button>
         <button type="reset">Borrar <i class="fa-solid fa-trash"></i></button>
     </form>
-
     <h2>Formularios con agrupamiento</h2>
     <form action="" method="post">
         <!-- Agrupa campos relacionados dentro de un recuadro o sección -->
@@ -180,7 +160,6 @@
             <!-- Campo para selección de fechas con calendario emergente -->
             <input type="date" name="fecha_nacimiento">
         </fieldset>
-        
         <fieldset>
             <legend>Datos de estudio:</legend>
             Nombre de la escuela:
@@ -194,23 +173,19 @@
         <button type="submit">Enviar <i class="fa-regular fa-paper-plane"></i></button>
         <button type="reset">Borrar <i class="fa-solid fa-trash"></i></button>
     </form>
-
     <h2>Formulario con limitaciones</h2>
     <form action="" method="post">
         Ingresa tu nombre:
         <!-- Campo de entrada deshabilitado (no se puede interactuar con él) -->
         <input type="text" name="nombre" disabled><br>
-        
         Contraseña:
         <!-- Campo con restricción de longitud máxima de caracteres permitidos -->
         <input type="password" name="pass" maxlength="5"><br>
-        
         Comentarios:
         <!-- Área de texto de solo lectura (no permite modificación de su contenido) -->
         <textarea name="comentarios" readonly>
 Este es mi comentario y no se puede borrar
         </textarea><br>
     </form>
-
 </body>
 </html>
